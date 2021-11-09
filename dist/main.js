@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("This's funcOne!!"),console.log("This's funcTwo!")})();

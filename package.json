@@ -1,0 +1,16 @@
+{
+  "name": "3d-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "author": "Yana Lesina",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.62.2",
+    "webpack-cli": "^4.9.1"
+  }
+}
