@@ -1,6 +1,3 @@
-// const firstModule = require();
-import firstModule from './modules/one'
-import secondModule from './modules/two'
+import timer from './modules/timer'
 
-firstModule();
-secondModule();
+timer('15 december 2021');
