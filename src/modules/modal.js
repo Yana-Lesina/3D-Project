@@ -3,7 +3,7 @@ const modal = () => {
   const btns = document.querySelectorAll('.popup-btn')
   const closeBtn = modal.querySelector('.popup-close')
 
-  const popubContent = modal.querySelector('.popup-content')
+  const modalContent = modal.querySelector('.popup-content')
 
   let inter1 //для запуска/остановки requestAnimationFrame
   let num = 0 // изменяет  modal.style.top, т.е. выдвигает окно на экран
@@ -15,12 +15,12 @@ const modal = () => {
     if(num <= 100 ) {
       num += 7
       inter1 = requestAnimationFrame(addModalContent)
-      popubContent.style.top = `${num}px`
+      modalContent.style.top = `${num}px`
 
     } else if (num > 100 ) {
       cancelAnimationFrame(inter1)
     }
-  }
+  };
 
   //простой вариант исчезновения модального окна
   //let inter2;
@@ -28,7 +28,7 @@ const modal = () => {
   //   if(num <= modal.clientHeight) {
   //     num += 20
   //     inter2 = requestAnimationFrame(removeModalContent)
-  //     popubContent.style.top = `${num}px`
+  //     modalContent.style.top = `${num}px`
 
   //   } else {
   //     cancelAnimationFrame(inter2)
@@ -55,15 +55,19 @@ const modal = () => {
         num = 0
       }
     });
-  }
+  };
 
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       modal.style.display = 'block'    
       
-      if(document.body.clientWidth > 780) addModalContent()
-    })
-  })
+      if(document.body.clientWidth > 780) {
+        addModalContent()
+      } else {
+        modalContent.style.top = 100 + 'px'
+      }
+    });
+  });
 
 
   closeBtn.addEventListener('click', () => {
@@ -76,14 +80,16 @@ const modal = () => {
           return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
         },
         draw: function () {
-          popubContent.style.top = num + progress * 550 + 'px'
+          modalContent.style.top = 100 + progress * 550 + 'px'
+          //100 здесь - это те самые 100px открытого modalContent
         }
       }) 
 
     } else {
       modal.style.display = 'none' 
+      num = 0
     }
-  })
-}
+  });
+};
 
 export default modal
