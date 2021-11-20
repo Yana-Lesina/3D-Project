@@ -19,8 +19,6 @@ const timer = (deadline) => {
   }
 
   const updateClock = function() {
-    console.log('updateClock!');
-    
     let getTime = getTimeRemaining()
 
     if(getTime.timeRemaining > 0) {
