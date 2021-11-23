@@ -1,17 +1,40 @@
+// const menu = () => {
+//   const menuBtn = document.querySelector('.menu')
+//   const menu = document.querySelector('menu')
+
+//   const toggleMenu = () => {
+//     menu.classList.toggle('active-menu')
+//   }
+
+//   menuBtn.addEventListener('click', toggleMenu)
+//   menu.addEventListener('click', (e) => {
+//     console.log(e.target.closest('menu'));
+//     if(e.target.tagName === 'A' || e.target.classList.contains('.close-btn')) {
+//       toggleMenu()
+//     }
+//   })
+// }
+
+// export default menu
+
+
+//Попытка допа
 const menu = () => {
-  const menuBtn = document.querySelector('.menu')
   const menu = document.querySelector('menu')
-  const closeBtn = menu.querySelector('.close-btn')
-  const menuItems =  menu.querySelectorAll('ul > li > a')
 
   const handleMenu = () => {
     menu.classList.toggle('active-menu')
   }
-
-  menuBtn.addEventListener('click', handleMenu)
-  closeBtn.addEventListener('click', handleMenu)
   
-  menuItems.forEach(menuItem => menuItem.addEventListener('click', handleMenu))
+  document.addEventListener('click', (e) => {
+    if(e.target.closest('.menu')) {
+      handleMenu()
+    } else if (e.target.tagName === 'A' || e.target.classList.contains('.close-btn')) {
+      handleMenu()
+    } else if (!e.target.closest('.active-menu') && menu.classList.contains('active-menu') ) {
+      handleMenu()
+    }
+  })
 }
 
 export default menu

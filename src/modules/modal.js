@@ -1,8 +1,6 @@
 const modal = () => {
-  const modal = document.querySelector('.popup')
-  const btns = document.querySelectorAll('.popup-btn')
-  const closeBtn = modal.querySelector('.popup-close')
-
+  const modal = document.querySelector('.popup');
+  const btns = document.querySelectorAll('.popup-btn');
   const modalContent = modal.querySelector('.popup-content')
 
   let inter1 //для запуска/остановки requestAnimationFrame
@@ -21,21 +19,6 @@ const modal = () => {
       cancelAnimationFrame(inter1)
     }
   };
-
-  //простой вариант исчезновения модального окна
-  //let inter2;
-  // const removeModalContent = () => {
-  //   if(num <= modal.clientHeight) {
-  //     num += 20
-  //     inter2 = requestAnimationFrame(removeModalContent)
-  //     modalContent.style.top = `${num}px`
-
-  //   } else {
-  //     cancelAnimationFrame(inter2)
-  //     modal.style.display = 'none'
-  //     num = 0
-  //   }
-  // }
 
   //анимация исчезновения модального окна
   const animate = ({duration, draw, timing}) => {
@@ -69,27 +52,26 @@ const modal = () => {
     });
   });
 
-
-  closeBtn.addEventListener('click', () => {
-    //removeModalContent()
-    
-    if(document.body.clientWidth > 780) {
-      animate({
-        duration: 1000,
-        timing: function back(x, timeFraction) {
-          return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
-        },
-        draw: function () {
-          modalContent.style.top = 100 + progress * 550 + 'px'
-          //100 здесь - это те самые 100px открытого modalContent
-        }
-      }) 
-
-    } else {
-      modal.style.display = 'none' 
-      num = 0
+  modal.addEventListener('click', (e) => {
+    if(!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+      
+      if(document.body.clientWidth > 780) {
+        animate({
+          duration: 1000,
+          timing: function back(x, timeFraction) {
+            return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
+          },
+          draw: function () {
+            modalContent.style.top = 100 + progress * 550 + 'px'
+            //100 здесь - это те самые 100px открытого modalContent
+          }
+        })
+      } else {
+        modal.style.display = 'none' 
+        num = 0
+      } 
     }
-  });
+  })
 };
 
 export default modal
