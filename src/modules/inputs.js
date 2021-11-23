@@ -21,9 +21,28 @@ const inputs = () => {
       const faultPhone = /[^\d\(\)\-]/gi.test(fPhone.value) 
 
       if(!faultName && !faultEmail && !faultPhone) {
-        alert('ошибок нет, данные ушли на сервер');
+        alert('Данные отправлены');
+        fName.value = ''
+        fEmail.value = ''
+        fPhone.value = ''
+
+        fName.attributes.placeholder.textContent = 'Ваше имя'
+        fEmail.attributes.placeholder.textContent = 'E-mail'
+        fPhone.attributes.placeholder.textContent = 'Номер телефона'
+        
       } else {
-        alert(`Найдены ошибки:\nfaultName=${faultName}\nfaultEmail=${faultEmail}\nfaultPhone=${faultPhone}`);
+        if(faultName) {
+          fName.value = ''
+          fName.attributes.placeholder.textContent = 'Только кириллица, дефис и пробел'
+        } 
+        if (faultEmail) {
+          fEmail.value = ''
+          fEmail.attributes.placeholder.textContent = 'Только латиница и  @  -  _  . ! ~ * \''
+        } 
+        if (faultPhone) {
+          fPhone.value = ''
+          fPhone.attributes.placeholder.textContent = 'Только цифры, (), - '
+        }
       }
     }); 
   })
