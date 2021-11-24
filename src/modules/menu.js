@@ -27,9 +27,13 @@ const menu = () => {
   }
   
   document.addEventListener('click', (e) => {
+    // console.log(e.target);
+    // console.log(e.target.classList.contains('dot'));
+
+    
     if(e.target.closest('.menu')) {
       handleMenu()
-    } else if (e.target.tagName === 'A' || e.target.classList.contains('.close-btn')) {
+    } else if (e.target.tagName === 'A' && !e.target.classList.contains('portfolio-btn') || e.target.classList.contains('.close-btn')) {
       handleMenu()
     } else if (!e.target.closest('.active-menu') && menu.classList.contains('active-menu') ) {
       handleMenu()
