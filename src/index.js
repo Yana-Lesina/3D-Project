@@ -4,6 +4,7 @@ import modal from './modules/modal'
 import inputs from './modules/inputs'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
+import calc from './modules/calc'
 
 
 timer('1 december 2021 9:30:00');
@@ -12,3 +13,4 @@ modal()
 inputs()
 tabs()
 slider('.portfolio-content', '.portfolio-item', '.portfolio-dots')
+calc(100)
