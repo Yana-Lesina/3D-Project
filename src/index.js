@@ -5,12 +5,33 @@ import inputs from './modules/inputs'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
 import calc from './modules/calc'
+import sendForm from './modules/sendForm'
 
 
-timer('1 december 2021 9:30:00');
+timer('15 december 2021 7:00:00');
 menu()
 modal()
 inputs()
 tabs()
 slider('.portfolio-content', '.portfolio-item', '.portfolio-dots')
 calc(100)
+
+const forms = document.querySelectorAll('form');
+if(forms.length !== 0) {
+  forms.forEach(form => {
+
+    sendForm({
+      formId: form.id, 
+      someElem: [
+        {
+          type: 'block', 
+          id: 'total'
+        }
+      ]
+    })
+
+  })
+} else {
+  console.log('Упс.. Формы потерялись..')
+}
+

@@ -1,15 +1,16 @@
 const inputs = () => {
 
-  const forms = document.querySelectorAll('form');
+  // const forms = document.querySelectorAll('form');
   const inputs = document.querySelectorAll('input');
 
   inputs.forEach(input => {
     input.addEventListener('input', (e) => {
 
       const faultCalc = /\D/g
-      const faultName = /[^а-я\s\-]/gi 
+      const faultName = /[^а-я\s]/gi 
       const faultEmail = /[^a-z\@\-\_\.\!\~\*\']/gi 
-      const faultPhone = /[^\d\(\)\-]/gi 
+      const faultPhone = /[^\d\(\)\-\+]/gi 
+      const faultMsg = /[^а-я\s\d\.\,\!\?\"\-]/gi
 
       if(e.target.closest('.calc-block')) {
         e.target.value = e.target.value.replace(faultCalc, '');
@@ -23,28 +24,31 @@ const inputs = () => {
       if(e.target.closest('.form-phone')) {
         e.target.value = e.target.value.replace(faultPhone, '');
       }
-    })
-  })
-
-  forms.forEach(form => {
-    const fName = form.querySelector('.form-name');
-    const fEmail = form.querySelector('.form-email');
-    const fPhone = form.querySelector('.form-phone');
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-
-      if (fName.value !== '' && fEmail.value !== '' && fPhone.value !== '') {
-        alert('Данные отправлены');
-        fName.value = ''
-        fEmail.value = ''
-        fPhone.value = ''
-
-      } else {
-        alert('В форму введены не все данные');
+      if(e.target.closest('.mess')) {
+        e.target.value = e.target.value.replace(faultMsg, '')
       }
     })
   })
+
+  // forms.forEach(form => {
+  //   const fName = form.querySelector('.form-name');
+  //   const fEmail = form.querySelector('.form-email');
+  //   const fPhone = form.querySelector('.form-phone');
+
+  //   form.addEventListener('submit', (e) => {
+  //     e.preventDefault()
+
+  //     if (fName.value !== '' && fEmail.value !== '' && fPhone.value !== '') {
+  //       //alert('Данные отправлены');
+  //       // fName.value = ''
+  //       // fEmail.value = ''
+  //       // fPhone.value = ''
+
+  //     } else {
+  //       // alert('В форму введены не все данные');
+  //     }
+  //   })
+  // })
 };
 
 export default inputs;
