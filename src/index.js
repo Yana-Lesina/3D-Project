@@ -32,6 +32,5 @@ if(forms.length !== 0) {
 
   })
 } else {
-  console.log('Упс.. Формы потерялись..')
+  console.log('Упс.. Формы потерялись..');
 }
-
