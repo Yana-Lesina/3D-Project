@@ -4,12 +4,12 @@ const timer = (deadline) => {
   const timerSeconds = document.getElementById('timer-seconds');
 
   let timeMemory = {};
-  //сюда будет записано время из localeStorage и передано в timerHours,...
+  //сюда будет записано время из localeStorage и передано в timerHours,timerMinutes,timerSeconds
   //для отображения времени без скачков с 00 при перезагрузке стр
 
   let refresh //интервальное обновление времени
 
-  const checkForZero = (num) => { return num < 10 ? num = '0' + num : num }
+  const checkForZero = (num) => { return num < 10 ? num = '0' + num : num };
 
   const getTimeRemaining = () => {
     let dateStop = new Date(deadline).getTime()
@@ -53,7 +53,7 @@ const timer = (deadline) => {
     timeMemory = {}
   }
 
-  refresh = setInterval(updateClock, 1000);
+  refresh = setInterval(updateClock, 1000);//перезапуск функции через каждую 1 с
 }
 
 export default timer

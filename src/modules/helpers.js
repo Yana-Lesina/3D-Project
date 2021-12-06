@@ -38,5 +38,5 @@ const  animate = ({timing, draw, duration}) => {
     });
   };
 
-export { animate, animateModalClose }
+export { animate, animateModalClose };
 
