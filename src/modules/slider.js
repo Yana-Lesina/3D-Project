@@ -101,4 +101,4 @@ const slider = (sliderClass, sliderItemsClass, dotClass) => {
   startSlide(timeInterval);
 };
 
-export default slider
+export default slider;
