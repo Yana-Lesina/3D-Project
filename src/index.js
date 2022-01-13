@@ -8,7 +8,7 @@ import calc from './modules/calc'
 import sendForm from './modules/sendForm'
 
 
-timer('15 december 2021 7:00:00');
+timer('01 june 2022 7:00:00');
 menu()
 modal()
 inputs()
